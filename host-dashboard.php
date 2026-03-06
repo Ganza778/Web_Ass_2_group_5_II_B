@@ -250,5 +250,3 @@ $listings = $stmt->get_result();
         <p style="background: #f8f9fa; padding: 20px; border-radius: 4px;">No booking history yet.</p>
     <?php endif; ?>
 </div>
-
-<!-- NO FOOTER INCLUDE - Router handles it -->
