@@ -21,7 +21,7 @@ All PHP files should be placed in your web server root (htdocs for XAMPP)
 - MySQL 5.7 or higher
 - MySQLi extension enabled
 
-### Features Implemented
+## Features Implemented
 -  Role-based authentication (Host/Guest/Admin)
 -  Browse and filter home-stays
 -  Add/edit listings (Hosts only)

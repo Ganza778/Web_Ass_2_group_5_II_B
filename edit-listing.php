@@ -9,7 +9,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'host') {
 $listing_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 $host_id = $_SESSION['user_id'];
 
-// Get listing details
 $stmt = $conn->prepare("SELECT * FROM homestays WHERE id = ? AND host_id = ?");
 $stmt->bind_param("ii", $listing_id, $host_id);
 $stmt->execute();
