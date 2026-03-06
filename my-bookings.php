@@ -1,16 +1,25 @@
 <?php
-if ($_SESSION['role'] != 'guest') {
-    header('Location: index.php?page=dashboard');
+require_once 'config.php';
+
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'guest') {
+    header('Location: index.php?page=login');
     exit();
 }
 
 $guest_id = $_SESSION['user_id'];
 
-// Get bookings with prepared statement
+// Get all bookings for this guest
 $stmt = $conn->prepare("
-    SELECT b.*, h.title, h.location, h.price, h.image 
+    SELECT 
+        b.*, 
+        h.title, 
+        h.location, 
+        h.price,
+        h.image,
+        u.name as host_name
     FROM bookings b 
     JOIN homestays h ON b.homestay_id = h.id 
+    JOIN users u ON h.host_id = u.id
     WHERE b.guest_id = ? 
     ORDER BY b.booking_date DESC
 ");
@@ -19,27 +28,13 @@ $stmt->execute();
 $bookings = $stmt->get_result();
 ?>
 
-<h1>My Bookings</h1>
+<!-- NO HEADER INCLUDE -->
 
-<?php if (isset($_GET['success'])): ?>
-    <p class="success">Booking confirmed successfully!</p>
-<?php endif; ?>
+<div class="container">
+    <h1>My Bookings</h1>
+    
+    <!-- Rest of your bookings content -->
+    <!-- ... -->
+</div>
 
-<?php if ($bookings->num_rows > 0): ?>
-    <div class="bookings-list">
-        <?php while($booking = $bookings->fetch_assoc()): ?>
-            <div class="booking-item">
-                <img src="images/<?php echo $booking['image']; ?>" alt="<?php echo $booking['title']; ?>" class="booking-image">
-                <div class="booking-info">
-                    <h3><?php echo $booking['title']; ?></h3>
-                    <p><?php echo $booking['location']; ?></p>
-                    <p><?php echo $booking['nights']; ?> nights - $<?php echo $booking['total_price']; ?></p>
-                    <p>Status: <span class="status <?php echo $booking['status']; ?>"><?php echo $booking['status']; ?></span></p>
-                    <p>Booked on: <?php echo date('M d, Y', strtotime($booking['booking_date'])); ?></p>
-                </div>
-            </div>
-        <?php endwhile; ?>
-    </div>
-<?php else: ?>
-    <p>You haven't made any bookings yet. <a href="index.php?page=listings">Browse available stays</a></p>
-<?php endif; ?>
+<!-- NO FOOTER INCLUDE -->

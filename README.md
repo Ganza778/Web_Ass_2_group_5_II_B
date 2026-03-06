@@ -22,12 +22,12 @@ All PHP files should be placed in your web server root (htdocs for XAMPP)
 - MySQLi extension enabled
 
 ### Features Implemented
-- ✅ Role-based authentication (Host/Guest/Admin)
-- ✅ Browse and filter home-stays
-- ✅ Add/edit listings (Hosts only)
-- ✅ Booking system with live price calculator
-- ✅ Guest booking history
-- ✅ Host dashboard with statistics
-- ✅ Admin verification system
-- ✅ Responsive design
-- ✅ Prepared statements for all DB queries
+-  Role-based authentication (Host/Guest/Admin)
+-  Browse and filter home-stays
+-  Add/edit listings (Hosts only)
+-  Booking system with live price calculator
+-  Guest booking history
+-  Host dashboard with statistics
+-  Admin verification system
+-  Responsive design
+-  Prepared statements for all DB queries
