@@ -6,7 +6,7 @@ if ($_SESSION['role'] != 'guest') {
 
 $homestay_id = $_GET['id'] ?? 0;
 
-// Get homestay details
+
 $stmt = $conn->prepare("SELECT * FROM homestays WHERE id = ? AND verified = 1");
 $stmt->bind_param("i", $homestay_id);
 $stmt->execute();
