@@ -11,7 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $location = $_POST['location'];
     $cultural_tag = $_POST['cultural_tag'];
     $host_id = $_SESSION['user_id'];
-
+    
+    // Handle image upload (simplified)
     $image = 'placeholder.jpg';
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $image = time() . '_' . $_FILES['image']['name'];
